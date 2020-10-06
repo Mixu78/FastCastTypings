@@ -1,8 +1,8 @@
 {
   "name": "@rbxts/fastcast",
-  "version": "1.0.0",
-  "description": "",
-  "main": "out/init.lua",
+  "version": "1.0.1",
+  "description": "Typescript types for EtiTheSpirit's FastCast",
+  "main": "src/init.lua",
   "scripts": {
     "prepublishOnly": "rbxtsc"
   },
@@ -12,9 +12,17 @@
   "publishConfig": {
     "access": "public"
   },
-  "types": "out/typings/index.d.ts",
+  "types": "src/typings/index.d.ts",
   "devDependencies": {
     "@rbxts/types": "^1.0.402",
     "typescript": "^4.0.3"
+  },
+  "files": [
+    "src"
+  ],
+  "homepage": "https://github.com/Mixu78/FastCastTypings#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mixu78/FastCastTypings"
   }
 }
