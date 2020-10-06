@@ -1,4 +1,8 @@
+import ActiveCast from './ActiveCast';
 import Caster from './Caster';
+import CastRayInfo from './CastRayInfo';
+import CastStateInfo from './CastStateInfo';
+import CastTrajectory from './CastTrajectory';
 import FastCastBehavior from './FastCastBehavior';
 
 export = FastCast;
@@ -36,4 +40,6 @@ declare namespace FastCast {
     * Creates a new FastCastBehavior, which contains information necessary to fire the cast properly.
     */
    export function newBehavior(): FastCastBehavior
+
+   export { ActiveCast, Caster, CastRayInfo, CastStateInfo, CastTrajectory, FastCastBehavior };
 }
