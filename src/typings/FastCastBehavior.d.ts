@@ -23,7 +23,32 @@ declare interface FastCastBehavior {
     /**
      * The constant force applied to this cast. This is good for things like gravity that affects projectiles, or a constant force of wind.
      */
-    Acceleration: Vector3;
+	Acceleration: Vector3;
+	
+	/**
+	 * If HighFidelityBehavior is not Default,
+	 * then the size of raycast segments is enforced to be as close to this value as possible where applicable (see HighFidelityBehavior for more).
+	 * 
+	 * Instead of creating a cast with a length based on the amount of time that it took to calculate and using that value itself,
+	 * it will instead split that value into pieces that are this many units long.
+	 * 
+	 * This can be used to ensure hit detection accuracy for physics simulations.
+	 * This is useless for non-physics casts, and will not do anything if the cast's acceleration is a zero vector.
+	 * 
+	 * **Do not set this value to incredibly small units!** This may cause severe performance problems.
+	 */
+	HighFidelitySegmentSize: number;
+
+	/**
+	 * The method in which FastCast handles physics cast accuracy. This is useless for non-physics casts, and will not do anything if the cast's acceleration is a zero vector.
+
+		1. **Default** - FastCast will behave as it normally does, and use a segment length based on delta time.
+		
+		2. **[NOT IMPLEMENTED]** OnlyWhenHit - Similar to Default, but if a segment registers a hit, it will recalculate that hit to see if it really should have hit..
+		
+		3. **Always** - FastCast will always enforce that the segment length is as close to HighFidelitySegmentSize no matter what. Be careful to not cause exponential cast lag (see HighFidelitySegmentSize).
+	 */
+	HighFidelityBehavior: 1 | 3;
 
     /**
      * A template for your cosmetic bullet, if desired.
@@ -68,7 +93,7 @@ declare interface FastCastBehavior {
      *      if (result.Instance.Transparency >= 0.5) {
      *          // This part is at least 50% transparent.
      *          // My laser can pass through these parts.
-     *          return true;
+     *			return true;
      *      }
      *      // It's less than 50% transparent. My laser can not go through these parts.
      *      return false;

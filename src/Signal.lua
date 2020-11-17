@@ -4,7 +4,15 @@
 -- I would be using BindableEvents, but they don't like cyclic tables (part of OOP objects with __index)
 
 -- Inject types
-require(script.Parent.TypeDefinitions)
+local TypeDefs = require(script.Parent.TypeDefinitions)
+type CanPierceFunction = TypeDefs.CanPierceFunction
+type GenericTable = TypeDefs.GenericTable
+type Caster = TypeDefs.Caster
+type FastCastBehavior = TypeDefs.FastCastBehavior
+type CastTrajectory = TypeDefs.CastTrajectory
+type CastStateInfo = TypeDefs.CastStateInfo
+type CastRayInfo = TypeDefs.CastRayInfo
+type ActiveCast = TypeDefs.ActiveCast
 
 local TestService = game:GetService("TestService")
 local table = require(script.Parent.Table)
@@ -140,4 +148,4 @@ function ConnectionStatic:Disconnect()
 	setmetatable(self, nil)
 end
 
-return SignalStatic
+return

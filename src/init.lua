@@ -2,7 +2,6 @@
 -- on GOD if some of you report type mismatches and other stuff caused by issues in the luau type checking ***beta*** ima have to smack some of yall 
 
 --[[
-	FastCast Ver. 13.0.4
 	Written by Eti the Spirit (18406183)
 	
 		The latest patch notes can be located here (and do note, the version at the top of this script might be outdated. I have a thing for forgetting to change it):
@@ -53,6 +52,12 @@ FastCast.VisualizeCasts = false
 FastCast.__index = FastCast
 FastCast.__type = "FastCast" -- For compatibility with TypeMarshaller
 
+-- Extra stuff
+FastCast.HighFidelityBehavior = {
+	Default = 1,
+	Always = 3
+}
+
 -----------------------------------------------------------
 ----------------------- STATIC DATA -----------------------
 -----------------------------------------------------------
@@ -79,7 +84,15 @@ local ERR_OBJECT_DISPOSED = "This Caster has been disposed. It can no longer be 
 -- This will inject all types into this context.
 -- YES, THIS MEANS YOU IGNORE MISSING TYPE ERRORS. Remember: Type checking is still in beta!
 -- * As of release
-require(script.TypeDefinitions)
+local TypeDefs = require(script.TypeDefinitions)
+type CanPierceFunction = TypeDefs.CanPierceFunction
+type GenericTable = TypeDefs.GenericTable
+type Caster = TypeDefs.Caster
+type FastCastBehavior = TypeDefs.FastCastBehavior
+type CastTrajectory = TypeDefs.CastTrajectory
+type CastStateInfo = TypeDefs.CastStateInfo
+type CastRayInfo = TypeDefs.CastRayInfo
+type ActiveCast = TypeDefs.ActiveCast
 
 -----------------------------------------------------------
 ----------------------- STATIC CODE -----------------------
@@ -112,6 +125,8 @@ function FastCast.newBehavior(): FastCastBehavior
 		Acceleration = Vector3.new(),
 		MaxDistance = 1000,
 		CanPierceFunction = nil,
+		HighFidelityBehavior = FastCast.HighFidelityBehavior.Default,
+		HighFidelitySegmentSize = 0.5,
 		CosmeticBulletTemplate = nil,
 		CosmeticBulletProvider = nil,
 		CosmeticBulletContainer = nil,
@@ -122,11 +137,11 @@ end
 local DEFAULT_DATA_PACKET = FastCast.newBehavior()
 function FastCast:Fire(origin: Vector3, direction: Vector3, velocity: Vector3 | number, castDataPacket: FastCastBehavior?): ActiveCast
 	if castDataPacket == nil then castDataPacket = DEFAULT_DATA_PACKET end
-		
+	
 	local cast = ActiveCastStatic.new(self, origin, direction, velocity, castDataPacket)
 	cast.RayInfo.WorldRoot = self.WorldRoot
 	return cast
 end
 
 -- Export
-return FastCast
+return
