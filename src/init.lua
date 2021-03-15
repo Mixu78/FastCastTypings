@@ -1,5 +1,5 @@
---!strict
--- on GOD if some of you report type mismatches and other stuff caused by issues in the luau type checking ***beta*** ima have to smack some of yall 
+--!nocheck
+-- ^ change to strict to crash studio c:
 
 --[[
 	Written by Eti the Spirit (18406183)
@@ -82,8 +82,6 @@ local ERR_OBJECT_DISPOSED = "This Caster has been disposed. It can no longer be 
 -----------------------------------------------------------
 
 -- This will inject all types into this context.
--- YES, THIS MEANS YOU IGNORE MISSING TYPE ERRORS. Remember: Type checking is still in beta!
--- * As of release
 local TypeDefs = require(script.TypeDefinitions)
 type CanPierceFunction = TypeDefs.CanPierceFunction
 type GenericTable = TypeDefs.GenericTable
@@ -144,4 +142,4 @@ function FastCast:Fire(origin: Vector3, direction: Vector3, velocity: Vector3 | 
 end
 
 -- Export
-return
+return FastCast

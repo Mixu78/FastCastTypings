@@ -1,4 +1,6 @@
---!strict
+--!nocheck
+-- ^ change to strict to crash studio c:
+
 local oldtypeof = typeof
 local function typeof(objIn: any): string
 	local objType = oldtypeof(objIn)

@@ -1,4 +1,6 @@
---!strict
+--!nocheck
+-- ^ change to strict to crash studio c:
+
 -- Defines all FC types.
 -- Any script that requires this will have these types defined.
 

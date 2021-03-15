@@ -1,6 +1,5 @@
---!strict
--- on GOD if some of you report type mismatches and other stuff caused by issues in the luau type checking ***beta*** ima have to smack some of yall 
-
+--!nocheck
+-- ^ change to strict to crash studio c:
 -- ActiveCast class type.
 -- The ActiveCast type represents a currently running cast.
 
@@ -10,8 +9,6 @@
 -----------------------------------------------------------
 
 -- This will inject all types into this context.
--- YES, THIS MEANS YOU IGNORE MISSING TYPE ERRORS. Remember: Type checking is still in beta!
--- * As of release
 local TypeDefs = require(script.Parent.TypeDefinitions)
 
 type CanPierceFunction = TypeDefs.CanPierceFunction
@@ -770,4 +767,4 @@ function ActiveCastStatic:Terminate()
 	setmetatable(self, nil)
 end
 
-return
+return ActiveCastStatic

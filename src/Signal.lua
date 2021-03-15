@@ -1,4 +1,6 @@
---!strict
+--!nocheck
+-- ^ change to strict to crash studio c:
+
 -- A new implementation of RBXScriptSignal that uses proper Lua OOP.
 -- This was explicitly made to transport other OOP objects.
 -- I would be using BindableEvents, but they don't like cyclic tables (part of OOP objects with __index)
@@ -148,4 +150,4 @@ function ConnectionStatic:Disconnect()
 	setmetatable(self, nil)
 end
 
-return
+return ConnectionStatic
