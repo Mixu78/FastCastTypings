@@ -150,4 +150,4 @@ function ConnectionStatic:Disconnect()
 	setmetatable(self, nil)
 end
 
-return ConnectionStatic
+return SignalStatic
