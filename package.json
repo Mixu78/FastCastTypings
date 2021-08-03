@@ -15,7 +15,7 @@
     "typescript": "^4.0.3"
   },
   "files": [
-    "src"
+    "out"
   ],
   "homepage": "https://github.com/Mixu78/FastCastTypings#readme",
   "repository": {
