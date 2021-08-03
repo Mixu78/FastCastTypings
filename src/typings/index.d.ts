@@ -5,23 +5,22 @@ import CastStateInfo from './CastStateInfo';
 import CastTrajectory from './CastTrajectory';
 import FastCastBehavior from './FastCastBehavior';
 
-export = FastCast;
+export { ActiveCast, Caster, CastRayInfo, CastTrajectory, CastStateInfo, FastCastBehavior }
 
 /**
  * FastCast is the root class of the module and offers the surface level methods required to make it work.
  * This is the object returned from `require(FastCast)`.
  */
-declare namespace FastCast {
+interface FastCast {
    /**
     * Construct a new Caster instance, which represents an entire gun or other projectile launching system.
     */
-   function neww(): Caster
-   export { neww as new }
+   new (): Caster
 
    /**
     * If true, verbose debug logging will be used, printing detailed information about what's going on during processing to the output.
     */
-   export let DebugLogging: boolean;
+	DebugLogging: boolean;
 
    /**
       * If true, casts will be shown ray-by-ray in the 3D world. This is shown in the following method:
@@ -34,12 +33,14 @@ declare namespace FastCast {
          It will be green if the impact stopped the ray.
          It will be red if it did not stop the ray due to piercing.
       */
-   export let VisualizeCasts: boolean;
+   VisualizeCasts: boolean;
 
    /**
     * Creates a new FastCastBehavior, which contains information necessary to fire the cast properly.
     */
-   export function newBehavior(): FastCastBehavior
-
-   export { ActiveCast, Caster, CastRayInfo, CastStateInfo, CastTrajectory, FastCastBehavior };
+   newBehavior(): FastCastBehavior
 }
+
+declare const FastCast: FastCast;
+
+export default FastCast;

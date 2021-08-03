@@ -142,4 +142,6 @@ function FastCast:Fire(origin: Vector3, direction: Vector3, velocity: Vector3 | 
 end
 
 -- Export
-return FastCast
+return {
+	default = FastCast;
+}
