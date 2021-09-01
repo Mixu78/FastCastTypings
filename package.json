@@ -1,6 +1,6 @@
 {
   "name": "@rbxts/fastcast",
-  "version": "13.2.0-ts.1",
+  "version": "13.2.0-ts.2",
   "description": "Typescript types for EtiTheSpirit's FastCast",
   "main": "src/init.lua",
   "keywords": [],
