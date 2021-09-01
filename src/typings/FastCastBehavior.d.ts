@@ -59,6 +59,13 @@ declare interface FastCastBehavior {
      */
     CosmeticBulletTemplate?: Instance;
 
+	/**
+	 * A predefined container object that all cosmetic bullets will automatically be parented to
+	 * when automatically created in the Fire function.
+	 * Generally, a good place is a new Folder or Model created in the Workspace, but any location in the Workspace will work.
+	 */
+	CosmeticBulletContainer?: Instance;
+
     /**
      * An alternative to CosmeticBulletTemplate that,
      * rather than having FastCast clone the part when its created,
